@@ -36,7 +36,7 @@ class Resize implements FilterInterface
                 $constraint->upsize();
             });
             **/
-            $image->resizeDown(width: (int)$params['widen']);
+            $image->scaleDown(width: (int)$params['widen']);
         }
 
         if (isset($params['heighten'])) {
@@ -45,7 +45,7 @@ class Resize implements FilterInterface
                 $constraint->upsize();
             });
             **/
-            $image->resizeDown(height: (int)$params['heighten']);
+            $image->scaleDown(height: (int)$params['heighten']);
         }
 
         return $image;
