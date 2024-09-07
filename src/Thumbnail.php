@@ -230,7 +230,7 @@ class Thumbnail
             }
         }
 
-        $this->renderedImage = (string)$image->encode($this->getFormat(), Arr::get($params, 'quality'));
+        $this->renderedImage = (string)$image->encode(new AutoEncoder(quality: Arr::get($params, 'quality')));
         return $this;
     }
 
@@ -275,8 +275,6 @@ class Thumbnail
 
     protected function getFormat(): object
     {
-
-        return new AutoEncoder();
 
         if (!empty($this->params['format'])) {
             return $this->params['format'];
