@@ -221,7 +221,7 @@ class Thumbnail
         $image = Image::read($this->source->getImage());
 
         foreach (Arr::get($this->config, 'filters', []) as $filterClassName) {
-            $filter = \Illuminate\Support\Facades\App::read($filterClassName);
+            $filter = \Illuminate\Support\Facades\App::make($filterClassName);
             if ($filter instanceof FilterInterface) {
                 $image = $filter->handle($image, $params);
             } else {
