@@ -230,7 +230,7 @@ class Thumbnail
             }
         }
 
-        $this->renderedImage = (string)$image->encode(new AutoEncoder(quality: Arr::get($params, 'quality')));
+        $this->renderedImage = (string)$image->encode(new AutoEncoder(quality: Arr::get($params, 'quality', 90)));
         return $this;
     }
 
