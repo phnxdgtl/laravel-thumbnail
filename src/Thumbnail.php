@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Encoders\AutoEncoder;
 use Intervention\Image\Laravel\Facades\Image;
 use Rolandstarke\Thumbnail\Filter\FilterInterface;
 
@@ -272,8 +273,11 @@ class Thumbnail
         return $filename;
     }
 
-    protected function getFormat(): string
+    protected function getFormat(): object
     {
+
+        return new AutoEncoder();
+
         if (!empty($this->params['format'])) {
             return $this->params['format'];
         } else if (!empty($this->config['presets'][$this->preset]['format'])) {
