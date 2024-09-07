@@ -273,7 +273,7 @@ class Thumbnail
         return $filename;
     }
 
-    protected function getFormat(): object
+    protected function getFormat(): string
     {
 
         if (!empty($this->params['format'])) {
