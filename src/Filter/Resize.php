@@ -27,19 +27,25 @@ class Resize implements FilterInterface
 
         if (isset($params['crop'])) {
             list($width, $height) = array_map('intval', explode('x', $params['crop']));
-            $image->fit($width, $height);
+            $image->resize($width, $height);
         }
 
         if (isset($params['widen'])) {
+            /** v2 approach:
             $image->widen((int)$params['widen'], function ($constraint) {
                 $constraint->upsize();
             });
+            **/
+            $image->resizeDown(width: (int)$params['widen']);
         }
 
         if (isset($params['heighten'])) {
+            /** v2 approach:
             $image->heighten((int)$params['heighten'], function ($constraint) {
                 $constraint->upsize();
             });
+            **/
+            $image->resizeDown(height: (int)$params['heighten']);
         }
 
         return $image;
